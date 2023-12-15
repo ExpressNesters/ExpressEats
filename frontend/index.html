@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>expressEats</h1>
+            <p>Enter ingredients you have, and we'll suggest recipes!</p>
+        </header>
+        <main>
+            <div class="search-box">
+                <input type="text" id="ingredientInput" placeholder="Enter ingredients...">
+                <button id="searchButton">Find Recipes</button>
+            </div>
+            <div id="recipeResults" class="recipe-results">
+                <!-- Recipe results will be displayed here -->
+            </div>
+        </main>
+    </div>
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            var ingredientInput = document.getElementById('ingredientInput').value;
+            var requestData = {
+                ingredients: ingredientInput,
+                prep_time: 60  // Or get this from another input field
+            };
+
+            fetch('http://0.0.0.0:8100/recommend', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayRecipes(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        function displayRecipes(recipes) {
+            var resultsDiv = document.getElementById('recipeResults');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            recipes.forEach(function(recipe) {
+                var recipeDiv = document.createElement('div');
+                recipeDiv.className = 'recipe';
+
+                var title = document.createElement('h3');
+                title.textContent = recipe.name;
+                recipeDiv.appendChild(title);
+
+                var instructions = document.createElement('p');
+                instructions.textContent = recipe.instructions;
+                recipeDiv.appendChild(instructions);
+
+                resultsDiv.appendChild(recipeDiv);
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
