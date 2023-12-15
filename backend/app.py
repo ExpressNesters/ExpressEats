@@ -1,39 +1,47 @@
-import pandas as pd
 from flask import Flask, request, jsonify
-import pickle
 import numpy as np
+import pandas as pd
+import joblib
 from flask_cors import CORS
 
+# Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
-# Load the model and vectorizer
-with open('recipe_model.pkl', 'rb') as file:
-    model = pickle.load(file)
-with open('tfidf_vectorizer.pkl', 'rb') as file:
-    vectorizer = pickle.load(file)
+CORS(app)
 
-# Load the cleaned dataset
-cleaned_dataset = pd.read_csv('recipes_dataset.csv')
+# Load the model, vectorizer, and dataset
+knn_retriever = joblib.load('ee_knn_retriever_model.pkl')
+tfidf_vectorizer = joblib.load('ee_tfidf_vectorizer.pkl')
+dataset = pd.read_csv('recipes_dataset.csv')
+max_time = dataset['TotalTimeInMins'].max()
+
+def make_recommendations(input_ingredients, input_time, model, tfidf_vectorizer, data, num_recommendations=5):
+    # Process the input
+    input_vector = tfidf_vectorizer.transform([input_ingredients])
+    
+    # Convert and reshape normalized time
+    normalized_time = np.array([input_time / max_time]).reshape(-1, 1)
+    input_features = np.hstack([input_vector.toarray(), normalized_time])
+
+    # Find nearest recipes
+    distances, indices = model.kneighbors(input_features, n_neighbors=num_recommendations)
+
+    # Prepare recommendations
+    recommendations = [{
+        'name': data.iloc[index]['TranslatedRecipeName'],
+        'description': data.iloc[index]['TranslatedInstructions']
+    } for index in indices[0]]
+
+    return recommendations
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
+    # Extract data from request
     data = request.json
-    ingredients = data['ingredients']
-    prep_time = data.get('prep_time', 60)  # Default prep time, e.g., 30 minutes
+    input_ingredients = data['ingredients']
+    input_time = data.get('prep_time', 60)  # Default prep time
 
-    # Preprocess and vectorize the input
-    vectorized_ingredients = vectorizer.transform([ingredients])
-    max_prep_time = 510  # Update this with the max prep time in your dataset
-    normalized_prep_time = prep_time / max_prep_time
-    combined_features = np.hstack((vectorized_ingredients.toarray(), [[normalized_prep_time]]))
-
-    # Make a prediction
-    distances, indices = model.kneighbors(combined_features)
-    recommendations = [{
-        'name': cleaned_dataset.iloc[index]['TranslatedRecipeName'],
-        'instructions': cleaned_dataset.iloc[index]['TranslatedInstructions']  # Or 'Instructions'
-    } for index in indices[0]]
-
+    # Get recommendations
+    recommendations = make_recommendations(input_ingredients, input_time, knn_retriever, tfidf_vectorizer, dataset)
     return jsonify(recommendations)
 
 if __name__ == '__main__':

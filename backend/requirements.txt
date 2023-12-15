@@ -1,5 +1,7 @@
 Flask
+Werkzeug
 numpy
 scikit-learn
 pandas
-Flask-CORS==3.0.10
+Flask-CORS
+joblib
