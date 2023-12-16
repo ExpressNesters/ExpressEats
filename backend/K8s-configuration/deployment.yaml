@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-eats-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express-eats-backend-app
+  template:
+    metadata:
+      labels:
+        app: express-eats-backend-app
+    spec:
+      containers:
+      - name: express-eats-backend-app
+        image: neeharikasingh/express-eats:0.5
+        ports:
+        - containerPort: 8100

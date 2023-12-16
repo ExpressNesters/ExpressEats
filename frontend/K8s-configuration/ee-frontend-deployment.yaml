@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-eats-frontend-deployment
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: express-eats-frontend-app
+  template:
+    metadata:
+      labels:
+        app: express-eats-frontend-app
+    spec:
+      containers:
+      - name: express-eats-frontend-app
+        image: your-dockerhub-username/nginx-frontend:latest
+        ports:
+        - containerPort: 80
