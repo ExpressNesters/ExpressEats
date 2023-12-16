@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    events {}
+    http {
+      include mime.types;
+      log_format my_format '$remote_addr - $remote_user [$time_local] "$request" '
+                                                        '$status $body_bytes_sent "$http_referer" '
+                                                        '"$http_user_agent" $request_time';
+
+      access_log /var/log/nginx/access.log my_format;
+      error_log /var/log/nginx/error.log warn;
+      server {
+        listen 8080;
+        location /recommend {
+            proxy_pass http://express-eats-backend-app-service:8100/recommend;
+        }
+        location / {
+            add_header Content-Security-Policy "default-src * data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'";
+            index index.html;
+            try_files $uri $uri/ /index.html;
+        }
+      }
+      
+    }
