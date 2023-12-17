@@ -1,6 +1,5 @@
 # 🍲 ExpressEats: Food Recipes Recommendation System
 
-![Stars](https://img.shields.io/github/stars/ExpressNesters/ExpressEats?style=social) ![Forks](https://img.shields.io/github/forks/ExpressNesters/ExpressEats?style=social) ![Issues](https://img.shields.io/github/issues/ExpressNesters/ExpressEats)
 
 ## 📋 Team Members
 
