@@ -11,13 +11,13 @@
 ## 🌟 Introduction
 ExpressEats is a sophisticated food recipes recommendation system designed to cater to the diverse culinary preferences of users. It leverages advanced algorithms to suggest recipes that align with individual tastes and dietary requirements.
 
-## 📚 Resources
+## 📚 Deliverables
 
 - 📄 [Project Proposal Document](https://github.com/ExpressNesters/ExpressEats/blob/main/ProjectProposal_ExpressEats.pdf)
 - 🎥 [Project Presentation Video](https://drive.google.com/file/d/10XoRLLtFAw1xXVFQzulynYpqbIlnJH2K/view?usp=drive_link)
 - 📑 [Project Report](https://github.com/ExpressNesters/ExpressEats/blob/main/DM_255_Final_Project_Report.docx)
 
-## 💻 Codebase
+## 💻 Colabs
 
 | Part | Link |
 |------|------|
