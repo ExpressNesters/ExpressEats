@@ -1,7 +1,39 @@
-# ExpressEats
+# 🍲 ExpressEats: Food Recipes Recommendation System
 
-[Project Proposal Document](https://github.com/ExpressNesters/ExpressEats/blob/main/ProjectProposal_ExpressEats.pdf)
+## 📋 Team Members
 
-[Project Presentation video](https://drive.google.com/file/d/10XoRLLtFAw1xXVFQzulynYpqbIlnJH2K/view?usp=drive_link)
+| 🧑‍💼 Name                 |
+|----------------------|
+| Harshith Akkapelli   |
+| Neeharika Singh      |
+| Sanjay Bhargav Kudupudi |
 
-[Project Report](https://github.com/ExpressNesters/ExpressEats/blob/main/DM_255_Final_Project_Report%20.docx)
+## 🌟 Introduction
+ExpressEats is a sophisticated food recipes recommendation system designed to cater to the diverse culinary preferences of users. It leverages advanced algorithms to suggest recipes that align with individual tastes and dietary requirements.
+
+## 📚 Resources
+
+- 📄 [Project Proposal Document](https://github.com/ExpressNesters/ExpressEats/blob/main/ProjectProposal_ExpressEats.pdf)
+- 🎥 [Project Presentation Video](https://drive.google.com/file/d/10XoRLLtFAw1xXVFQzulynYpqbIlnJH2K/view?usp=drive_link)
+- 📑 [Project Report](https://github.com/ExpressNesters/ExpressEats/blob/main/DM_255_Final_Project_Report.docx)
+
+## 💻 Codebase
+
+| Part | Link |
+|------|------|
+| Part-1 | [🔗 View Colab](https://colab.research.google.com/drive/1xDXfK0uYqlIlknKVtaToKmxSuUHSyhGb?usp=sharing) |
+| Part-2 | [🔗 View Colab](https://colab.research.google.com/drive/1BNe5Ls1-1zm0Oi-u0dudUKhQvZrcLNtG?usp=sharing) |
+| Part-3 | [🔗 View Colab](https://colab.research.google.com/drive/1i6yGBU2sgiFkLy11uICRgaliG6m-6Jh6?usp=sharing) |
+| Part-4 | [🔗 View Colab](https://colab.research.google.com/drive/1WENxYP60Bb-1gnp_w8rDnKdTvaHQu-C0?usp=sharing) |
+
+## 🤝 Contributing
+We welcome contributions to the ExpressEats project. If you're interested in contributing, please read our contribution guidelines.
+
+## ⚖️ License
+This project is licensed under the [MIT License](LICENSE).
+
+## 📞 Contact
+For any queries or collaborations, feel free to contact us.
+
+## 🙏 Acknowledgments
+Special thanks to all contributors and supporters who have helped make this project a success.
