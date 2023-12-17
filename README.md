@@ -8,6 +8,8 @@
 | Neeharika Singh      |
 | Sanjay Bhargav Kudupudi |
 
+
+
 ## 🌟 Introduction
 ExpressEats is a sophisticated food recipes recommendation system designed to cater to the diverse culinary preferences of users. It leverages advanced algorithms to suggest recipes that align with individual tastes and dietary requirements.
 
