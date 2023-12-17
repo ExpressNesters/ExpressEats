@@ -1,6 +1,0 @@
-Flask
-pandas
-numpy
-scikit-learn
-pycaret
-xgboost
